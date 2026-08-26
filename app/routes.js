@@ -549,11 +549,36 @@ router.post("/medical-evidence-outcome", function (req, res) {
   const answer = req.session.data["furthermedicalevidence"];
 
   if (answer === "further-hcp-review-required") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "face-to-face-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "face-to-face-assessment-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "paper-based-review") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "telephone-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "telephone-assessment-with-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  }
+});
+
+
+router.post("/medical-evidence-no-outcome", function (req, res) {
+  const answer = req.session.data["furthermedicalevidence"];
+
+  if (answer === "SREL") {
     res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-1");
   } else if (answer === "face-to-face-assessment") {
     res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-2");
+  } else if (answer === "face-to-face-assessment-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-2");
   } else if (answer === "paper-based-review") {
     res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-4");
+  } else if (answer === "telephone-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-5");
+  } else if (answer === "telephone-assessment-with-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-5");
   }
 });
 
@@ -571,13 +596,36 @@ router.post("/persisting/medical-evidence-outcome", function (req, res) {
   const answer = req.session.data["furthermedicalevidence"];
 
   if (answer === "further-hcp-review-required") {
-    res.redirect(
-      "/v2/hcp-review/persisting/medical-evidence-outcome-statements-1"
-    );
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
   } else if (answer === "face-to-face-assessment") {
-    res.redirect(
-      "/v2/hcp-review/persisting/medical-evidence-outcome-statements-2"
-    );
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "face-to-face-assessment-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "paper-based-review") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "telephone-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  } else if (answer === "telephone-assessment-with-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-FME-yes");
+  }
+});
+
+
+router.post("/persisting/medical-evidence-no-outcome", function (req, res) {
+  const answer = req.session.data["furthermedicalevidence"];
+
+  if (answer === "SREL") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-1");
+  } else if (answer === "face-to-face-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-2");
+  } else if (answer === "face-to-face-assessment-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-2");
+  } else if (answer === "paper-based-review") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-4");
+  } else if (answer === "telephone-assessment") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-5");
+  } else if (answer === "telephone-assessment-with-support") {
+    res.redirect("/v2/hcp-review/medical-evidence-outcome-statements-5");
   }
 });
 

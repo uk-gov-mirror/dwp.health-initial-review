@@ -24,7 +24,7 @@
                 <h1 class="govuk-heading-l">Add HCP review</h1>
 
 
-                <form method="post" action="/v2/hcp-review/medical-evidence-check-answers">
+                                <form method="post" action="/v2/hcp-review/medical-evidence-check-answers">
 
 
                   <div id="standard-phrases-group">
@@ -40,7 +40,7 @@
             classes: "govuk-fieldset__legend--s"
             }
             },
-           
+         
             items: [
 
             {
@@ -64,10 +64,33 @@
             text: "Conditions stated are (including but not limited to):"
             },
             {
+            value: "Evidence available is insufficient to be able to provide robust advice to the DWP therefore PIP PBR cannot be completed at this time.",
+            text: "Evidence available is insufficient to be able to provide robust advice to the DWP therefore PIP PBR cannot be completed at this time."
+            },
+            {
+            value: "FME request considered however no valid consent.",
+            text: "FME request considered however no valid consent."
+            },
+            {
             value: "No further evidence requested as this is unlikely to advise on information required.",
             text: "No further evidence requested as this is unlikely to advise on information required."
+            },
+            {
+            value: "A full telephone assessment is needed. This is to determine input updates, clarify inconsistencies, establish current HOC, SOH variability or functionality and level of support needed. This will enable robust advice on the level of restriction and the extent of variability.",
+            text: "A full telephone assessment is needed. This is to determine input updates, clarify inconsistencies, establish current HOC, SOH variability or functionality and level of support needed. This will enable robust advice on the level of restriction and the extent of variability."
+            },
+            {
+            value: "No evidence this would be unsuitable for the claimant or that there are significant cognitive, sensory, intellectual or mental health restrictions.",
+            text: "No evidence this would be unsuitable for the claimant or that there are significant cognitive, sensory, intellectual or mental health restrictions."
+            },
+            {
+            value: "No TA availability restrictions reported.",
+            text: "No TA availability restrictions reported."
+            },
+            {
+            value: "Sutiable for TA or F2F.",
+            text: "Sutiable for TA or F2F."
             }
-
             ]
             }) }}
 
@@ -123,13 +146,35 @@
   ]
 }) }}
 
-                                                {{ govukButton({text: "Continue" }) }}
+{% if data["furthermedicalevidence"] == "paper-based-review" %}
 
-                                                </form>
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    name: "whowillcompleteassessment",
+    fieldset: {
+      legend: {
+        text: "Who will complete the assessment?",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "self",
+        text: "I will complete it"
+      },
+      {
+        value: "another-hcp",
+        text: "Another HCP will complete it"
+      }
+    ]
+  }) }}
+
+{% endif %}
+                                                {{ govukButton({text: "Continue" }) }}
 
  
             </div>
-
 
             <div class="govuk-grid-column-one-quarter">
         <aside class="app-related-items" role="complementary">
